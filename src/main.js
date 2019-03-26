@@ -5,6 +5,7 @@ const image2 = require('./images/image2.jpg');
 const image3 = require('./images/image3.jpg');
 var { height, width } = Dimensions.get('window');
 import AntIcon from 'react-native-vector-icons/AntDesign';
+import * as Animatable from 'react-native-animatable';
 
 export default class Main extends Component {
     constructor(props) {
@@ -38,7 +39,8 @@ export default class Main extends Component {
                     <AntIcon name="closecircle" size={40} color="#3C42F4" style={{ margin: 8 }} />
                 </TouchableOpacity>
                 {this.state.showDetails == true &&
-                    <View style={[{
+
+                    <Animatable.View animation={"fadeInUpBig"} delay={1} duration={500} style={[{
                         zIndex: 10000000, position: "absolute", top: (this.state.fullscreen == true) ?
                             "0%" : "50%",
                         backgroundColor: "#fff", width: '100%', alignSelf: "center", padding: "5%"
@@ -99,7 +101,7 @@ export default class Main extends Component {
                                 </View>
                             </View>
                         </ScrollView>
-                    </View>
+                    </Animatable.View>
                 }
             </View>
         );
